@@ -13,6 +13,10 @@
                 <i class="iconfont iconmeditor-time"></i> {{post.pubTime}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
             </div>
             <p class="summary">{{post.summary}}</p>
+
+          <div class="p-tag" v-if="post.tags.length">
+              <router-link v-for="item in post.tags" :key="item.tagName" :to="`/tags/${item.id}/${item.tagName}`">{{ item.tagName }} </router-link>
+          </div>
             <footer class="entry-footer">
                 <div class="post-more">
                     <router-link :to="`/article/${post.id}`"><i class="iconfont iconfish-li" style="font-size: 25px;"></i></router-link>
@@ -110,6 +114,20 @@
             line-height: 30px;
         }
 
+        .p-tag{
+          margin: 0 0 0 17%;
+          font-size: 15px;
+          color: #10de13;
+          letter-spacing: 1px;
+          font-weight: 800;
+          border: 4px;
+
+          a{
+            background-color: #f8f8f8;
+            margin: 10px;
+          }
+
+        }
         footer.entry-footer {
             margin: 0 0 0 17%;
             list-style: none;
