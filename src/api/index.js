@@ -28,6 +28,14 @@ export function fetchCategory() {
     })
 }
 
+export function fetchTags() {
+    return request({
+        url: '/tags',
+        method: 'get',
+        params: {}
+    })
+}
+
 export function fetchSocial() {
     return request({
         url: '/social',

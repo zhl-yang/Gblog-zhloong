@@ -30,15 +30,15 @@
                 <i class="iconfont iconeyes"></i>
                 <span class="count">{{ article.viewNum }}</span>
               </div>
-              <div class="donate" @click="showDonate=!showDonate">
-                <span>赏</span>
-                <ul class="donate_inner" :class="{'show':showDonate}">
-                  <li class="wedonate"><img src="http://cdn.fengziy.cn/gblog/wexin_pay.png">
-                    <p>微信</p></li>
-                  <li class="alidonate"><img src="http://cdn.fengziy.cn/gblog/ali_pay.jpg">
-                    <p>支付宝</p></li>
-                </ul>
-              </div>
+<!--              <div class="donate" @click="showDonate=!showDonate">-->
+<!--                <span>赏</span>-->
+<!--                <ul class="donate_inner" :class="{'show':showDonate}">-->
+<!--                  <li class="wedonate"><img src="http://cdn.fengziy.cn/gblog/wexin_pay.png">-->
+<!--                    <p>微信</p></li>-->
+<!--                  <li class="alidonate"><img src="http://cdn.fengziy.cn/gblog/ali_pay.jpg">-->
+<!--                    <p>支付宝</p></li>-->
+<!--                </ul>-->
+<!--              </div>-->
               <!-- 文章标签 -->
               <div class="post-tags">
                 <i class="iconfont iconcategory"></i>
@@ -50,7 +50,7 @@
           <!--声明-->
           <div class="open-message">
             <p>声明：本博客的数据由个人上传，不代表本博客立在任何一个观点上，也不代表本博客对任何一个人的观点。</p>
-            <p>转载：转载请注明原文链接 - <a :href=this.$route.path>{{ article.title }}</a></p>
+            <p>转载：转载请注明原文链接 - <a :href="getLocationHref" target="_blank">{{ article.title }} </a></p>
           </div>
           <!--评论-->
           <div class="comments">
@@ -102,10 +102,13 @@ export default {
     comment,
     menuTree
   },
+  computed: {
+    getLocationHref(){
+      let href = window.location.href
+      return href;
+    }
+  },
   methods: {
-    tagOrCategory(type, id) {
-      this.$router.push({path: `/${type}/${id}`})
-    },
     getComment(id) {
       getCommentsByArticle(id)
           .then((data) => {
@@ -113,21 +116,9 @@ export default {
           })
           .catch((error) => {
             if (error !== 'error') {
-              this.$message({
-                type: 'error',
-                message: '评论加载失败',
-                showClose: true,
-              })
+              alert('评论加载失败')
             }
           })
-    },
-
-    fetchH(arr, left, right) {
-      if (right) {
-        return arr.filter(item => item.offsetTop > left && item.offsetTop < right)
-      } else {
-        return arr.filter(item => item.offsetTop > left)
-      }
     },
 
     /**

@@ -18,6 +18,12 @@ const routes = [
         meta: { title: '分类', params: ['cate', 'title']}
     },
     {
+        path: '/tags/:tagId/:tagName',
+        name: 'tags',
+        component: () => import('../views/Home.vue'),
+        meta: { title: '标签', params: ['tagId', 'tagName']}
+    },
+    {
         path: '/search/:words',
         name: 'search',
         component: () => import('../views/Home.vue'),

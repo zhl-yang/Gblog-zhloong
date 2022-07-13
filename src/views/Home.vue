@@ -7,6 +7,7 @@
         <div class="search-result" v-if="hideSlogan">
           <span v-if="searchWords">搜索结果："{{ searchWords }}" 相关文章</span>
           <span v-else-if="category">分类 "{{ category }}" 相关文章</span>
+          <span v-else-if="tagName">标签 "{{ tagName }}" 相关文章</span>
         </div>
         <quote v-else>{{ notice }}</quote>
       </div>
@@ -63,6 +64,8 @@ export default {
         pageNo: 1,
         article: {
           title: '',
+          tagId: null,
+          categoryId: null
         },
       },
     }
@@ -82,8 +85,11 @@ export default {
     category() {
       return this.$route.params.title
     },
+    tagName() {
+      return this.$route.params.tagName
+    },
     hideSlogan() {
-      return this.category || this.searchWords
+      return this.category || this.searchWords || this.tagName
     },
     notice() {
       return this.$store.getters.notice
@@ -98,17 +104,32 @@ export default {
       })
     },
     fetchList() {
+      /**
+       * 搜索
+       */
       if (this.$route.params.words) {
         this.innerPage.article.title = this.$route.params.words
       } else {
         this.innerPage.article.title = "";
       }
+      /**
+       * 分类
+       */
       if (this.$route.params.cate) {
         this.innerPage.article.categoryId = this.$route.params.cate
       } else {
         this.innerPage.article.categoryId = null
       }
+      /**
+       * 标签
+       */
+      if (this.$route.params.tagName) {
+        this.innerPage.article.tagId = this.$route.params.tagId
+      } else {
+        this.innerPage.article.tagId = null
+      }
       this.innerPage.pageNo = 1
+      this.postList = []
       fetchList(this.innerPage).then(res => {
         this.postList = res.data.records || []
         this.currPage = res.data.current
@@ -147,8 +168,6 @@ export default {
   },
   watch: {
     $route: function (newVal, oldVal) {
-      console.log("oldVal:" + oldVal.fullPath)
-      console.log("newVal:" + newVal.fullPath)
       if (oldVal.fullPath !== newVal.fullPath) {
         this.fetchList();
       }

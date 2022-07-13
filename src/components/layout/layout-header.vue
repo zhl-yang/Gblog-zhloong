@@ -17,10 +17,18 @@
         <router-link to="/">首页</router-link>
       </div>
       <div class="menu-item hasChild">
-        <a href="#">文章</a>
+        <a href="#">分类</a>
         <div class="childMenu" v-if="category.length">
           <div class="sub-menu" v-for="item in category" :key="item.title">
             <router-link :to="`/category/${item.id}/${item.title}`">{{ item.title }}</router-link>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item hasChild">
+        <a href="#">标签</a>
+        <div class="childMenu" v-if="tags.length">
+          <div class="sub-menu" v-for="item in tags" :key="item.tagName">
+            <router-link :to="`/tags/${item.id}/${item.tagName}`">{{ item.tagName }}</router-link>
           </div>
         </div>
       </div>
@@ -41,7 +49,7 @@
 
 <script>
 import HeaderSearch from '@/components/header-search'
-import {fetchCategory} from '../../api'
+import {fetchCategory,fetchTags} from '../../api'
 import {fetchFriend} from '../../api/friend'
 
 export default {
@@ -53,6 +61,7 @@ export default {
       fixed: false,
       hidden: false,
       category: [],
+      tags: [],
       friends: [],
       mobileShow: false
     }
@@ -60,6 +69,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.watchScroll)
     this.fetchCategory()
+    this.fetchTags()
     this.fetchFriend()
   },
   beforeDestroy() {
@@ -86,21 +96,19 @@ export default {
         console.log(err)
       })
     },
+    fetchTags() {
+      fetchTags().then(res => {
+        this.tags = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     fetchFriend() {
       fetchFriend().then(res => {
         this.friends = res.data
       }).catch(err => {
         console.log(err)
       })
-    },
-    watch: {
-      $route: function (newVal, oldVal) {
-        console.log("oldVal:" + oldVal.fullPath)
-        console.log("newVal:" + newVal.fullPath)
-        if (oldVal.fullPath !== newVal.fullPath) {
-          this.fetchFriend();
-        }
-      }
     },
   }
 }
