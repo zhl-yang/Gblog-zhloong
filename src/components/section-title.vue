@@ -13,7 +13,7 @@
         color: #757575;
         font-size: 16px;
         font-weight: 400;
-        padding-bottom: 15px;
-        border-bottom: 1px dashed #ECECEC;
+        padding-top: 15px;
+        border-top: 1px dashed #ECECEC;
     }
 </style>
