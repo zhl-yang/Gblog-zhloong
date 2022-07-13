@@ -102,6 +102,7 @@
             width: 100%;
             height: 100%;
             border-radius: 100%;
+            background-color: #5fb878;
         }
     }
     @media (max-width: 600px){
