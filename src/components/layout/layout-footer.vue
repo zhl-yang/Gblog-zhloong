@@ -11,7 +11,7 @@
             </div>
             <div class="footer-item">
                 <div>本站已苟活 {{runTimeInterval}}</div>
-                <div><a target="_blank" class="out-link" href="#">☞后台管理</a></div>
+                <div><a target="_blank" class="out-link" href="https://admin.zhloong.xyz/">☞后台管理</a></div>
             </div>
         </div>
         <div class="copyright">Copyright © 2022 by <a target="_blank" class="out-link" href="https://www.fengziy.cn">zhloong.xyz</a> . All rights reserved. | <a target="_blank" class="out-link" href="http://www.beian.miit.gov.cn">陕ICP备18020752</a></div>

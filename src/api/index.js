@@ -28,14 +28,6 @@ export function fetchCategory() {
     })
 }
 
-export function fetchFriend() {
-    return request({
-        url: '/friend',
-        method: 'get',
-        params: {}
-    })
-}
-
 export function fetchSocial() {
     return request({
         url: '/social',
@@ -52,10 +44,3 @@ export function fetchSiteInfo() {
     })
 }
 
-export function fetchComment() {
-    return request({
-        url: '/comment',
-        method: 'get',
-        params: {}
-    })
-}

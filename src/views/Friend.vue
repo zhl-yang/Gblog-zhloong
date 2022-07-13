@@ -29,7 +29,7 @@
 <script>
     import sectionTitle from '@/components/section-title'
     import Quote from "@/components/quote";
-    import {fetchFriend} from '../api'
+    import {fetchFriend, addFriend} from '../api/friend'
     export default {
         name: "Friend",
         data(){

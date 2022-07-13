@@ -5,26 +5,32 @@
                 <div class="about-site about-info">
                     <section-title><span>❤</span>关于博客</section-title>
                     <div class="info-card">
-                        <p>偶然之间看见了<a target="_blank" class="out-link" href="https://zhebk.cn/Web/Akina.html">Akina For Typecho</a>博客的主题，风格很是喜欢。</p>
-                        <p>然后就开始用Vue搭建这种风格的博客，在此呢也将这套模板开放给大家。</p>
-                        <p><a target="_blank" href="https://gitee.com/fengziy/Gblog" style="color: #ff6d6d;">Gitee仓库</a> | <a target="_blank" href="https://github.com/fengziye/Gblog" style="color: #ff6d6d;">Github仓库</a>记得star★哟</p>
+                        <p>网站源码来自 <a target="_blank" href="https://gitee.com/fengziy/Gblog" style="color: #ff6d6d;">Gblog</a></p>
                     </div>
                 </div>
                 <div class="about-me about-info">
                     <section-title id="Guestbook"><span>❤</span>给我留言</section-title>
                     <div class="info-card">
                         <div class="contactForm">
+                          <div class="form-item">
+                            <label for="mail">网站名称</label>
+                            <input class="v" type="text" name="name" id="name" v-model="friend.name">
+                          </div>
+                          <div class="form-item">
+                            <label for="mail">网站链接</label>
+                            <input class="v" type="text" name="domain" id="domain" v-model="friend.domain">
+                          </div>
                             <div class="form-item">
                                 <label for="mail">邮箱</label>
-                                <input class="v" type="email" name="mail" id="mail">
+                                <input class="v" type="email" name="mail" id="mail" v-model="friend.email">
                             </div>
                             <div class="form-item">
                                 <label for="content">内容</label>
-                                <textarea class="v" id="content" name="content"></textarea>
+                                <textarea class="v" id="content" name="content" v-model="friend.content"></textarea>
                             </div>
                             <div class="form-item">
                                 <label></label>
-                                <button>提交</button>
+                                <button @click="addFriend">提交</button>
                             </div>
                         </div>
                     </div>
@@ -38,18 +44,35 @@
     import {getTime,getTimeInterval} from '@/utils'
     // import Quote from "@/components/quote";
     // import {fetchFriend} from '../api'
+    import {addFriend, fetchFriend} from '../api/friend'
     export default {
         name: "About",
         data() {
             return {
-                list: []
+                list: [],
+                friend:{
+                  domain:"",
+                  name:"",
+                  email: "",
+                  content: ""
+                },
             }
         },
         components: {
             // Quote,
             sectionTitle
         },
-        methods: {},
+        methods: {
+          addFriend() {
+            addFriend(this.friend).then(res => {
+              alert('提交成功')
+              this.$router.push('/')
+            }).catch(err => {
+              alert(err)
+              console.log(err)
+            })
+          }
+        },
         mounted() {
         }
     }
@@ -91,7 +114,7 @@
                     margin-bottom: 20px;
                 }
                 label{
-                  width: 80px;
+                  width: 100px;
                 }
                 .v{
                     min-height: 40px;
