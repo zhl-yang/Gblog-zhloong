@@ -6,9 +6,9 @@ export default [
         type: 'get',
         response: () => {
             return {
-                code: 20000,
+                code: 200,
                 data: {
-                    avatar: 'https://s2.ax1x.com/2020/01/17/1SCadg.png',
+                    avatar: 'https://s1.ax1x.com/2022/07/13/jRmEUs.jpg',
                     slogan: 'The way up is not crowded, and most chose ease.',
                     name: 'FZY′blog',
                     domain: 'https://www.fengziy.cn',
@@ -24,7 +24,7 @@ export default [
         type: 'get',
         response: () => {
             return {
-                code: 20000,
+                code: 200,
                 data: [
                     {
                         id: 1,

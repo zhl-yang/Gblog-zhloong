@@ -1,56 +1,104 @@
 import axios from 'axios'
 import store from '@/store'
+import {baseURL, contentType, requestTimeout,} from '@/config'
+import {tansParams} from '@/utils/index'
+import errorCode from '@/utils/errorCode'
+import cache from '@/plugins/cache'
 
-// create an axios instance
+
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+// 创建axios实例
 const service = axios.create({
-    baseURL: process.env.VUE_APP_BASE_API,
-    timeout: 5000 // request timeout
+    // axios中请求配置有baseURL选项，表示请求URL公共部分
+    baseURL: baseURL,
+    // 超时
+    timeout: requestTimeout,
+    headers: {
+        'Content-Type': contentType,
+    },
 })
 
-// request interceptor
-service.interceptors.request.use(
-    config => {
-        // do something before request is sent
-
-        // if (store.getters.token) {
-        //     config.headers['X-Token'] = getToken()
-        // }
-        return config
-    },
-    error => {
-        // do something with request error
-        console.log(error) // for debug
-        return Promise.reject(error)
+// request拦截器
+service.interceptors.request.use(config => {
+    // 是否需要设置 token
+    // const isToken = (config.headers || {}).isToken === false
+    // 是否需要防止数据重复提交
+    const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
+    // if (getToken() && !isToken) {
+    //     config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+    // }
+    // get请求映射params参数
+    if (config.method === 'get' && config.params) {
+        let url = config.url + '?' + tansParams(config.params);
+        url = url.slice(0, -1);
+        config.params = {};
+        config.url = url;
     }
-)
-
-// response interceptor
-service.interceptors.response.use(
-    /**
-     * If you want to get http information such as headers or status
-     * Please return  response => response
-     */
-
-    /**
-     * Determine the request status by custom code
-     * Here is just an example
-     * You can also judge the status by HTTP Status Code
-     */
-    response => {
-        const res = response.data
-        // store.commit('SET_LOADING',false);
-
-        // if the custom code is not 20000, it is judged as an error.
-        if (res.code !== 20000) {
-            return Promise.reject(new Error(res.message || 'Error'))
+    if (!isRepeatSubmit && (config.method === 'post' || config.method === 'put')) {
+        const requestObj = {
+            url: config.url,
+            data: typeof config.data === 'object' ? JSON.stringify(config.data) : config.data,
+            time: new Date().getTime()
+        }
+        const sessionObj = cache.session.getJSON('sessionObj')
+        if (sessionObj === undefined || sessionObj === null || sessionObj === '') {
+            cache.session.setJSON('sessionObj', requestObj)
         } else {
-            return res
+            const s_url = sessionObj.url;                // 请求地址
+            const s_data = sessionObj.data;              // 请求数据
+            const s_time = sessionObj.time;              // 请求时间
+            const interval = 1000;                       // 间隔时间(ms)，小于此时间视为重复提交
+            if (s_data === requestObj.data && requestObj.time - s_time < interval && s_url === requestObj.url) {
+                const message = '数据正在处理，请勿重复提交';
+                console.warn(`[${s_url}]: ` + message)
+                return Promise.reject(new Error(message))
+            } else {
+                cache.session.setJSON('sessionObj', requestObj)
+            }
+        }
+    }
+    return config
+}, error => {
+    console.log(error)
+    Promise.reject(error)
+})
+
+// 响应拦截器
+service.interceptors.response.use(res => {
+        // 未设置状态码则默认成功状态
+        const code = res.data.code || 200;
+        // 获取错误信息
+        const msg = res.data.message || errorCode['default']
+        // 二进制数据则直接返回
+        if (res.request.responseType === 'blob' || res.request.responseType === 'arraybuffer') {
+            return res.data
+        }
+        if (code === 401) {
+            return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
+        } else if (code === 500) {
+            return Promise.reject(new Error(msg))
+        } else if (code !== 200) {
+            // ElNotification.error({
+            //     title: msg
+            // })
+            return Promise.reject('error')
+        } else {
+            return Promise.resolve(res.data)
         }
     },
     error => {
-        console.log('err' + error) // for debug
+        console.log('err' + error)
+        let {message} = error;
+        if (message == "Network Error") {
+            message = "后端接口连接异常";
+        } else if (message.includes("timeout")) {
+            message = "系统接口请求超时";
+        } else if (message.includes("Request failed with status code")) {
+            message = "系统接口" + message.substr(message.length - 3) + "异常";
+        }
         return Promise.reject(error)
     }
 )
+
 
 export default service

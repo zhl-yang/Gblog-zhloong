@@ -1,10 +1,14 @@
 import request from '@/utils/request'
 
-export function fetchList(params) {
+export function fetchList(page) {
     return request({
         url: '/post/list',
-        method: 'get',
-        params: params
+        method: 'post',
+        data: {
+            current: page.pageNo,
+            size: page.pageSize,
+            article: page.article,
+        },
     })
 }
 
