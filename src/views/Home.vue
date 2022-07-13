@@ -80,7 +80,7 @@ export default {
       return this.$route.params.words
     },
     category() {
-      return this.$route.params.cate
+      return this.$route.params.title
     },
     hideSlogan() {
       return this.category || this.searchWords
@@ -98,6 +98,17 @@ export default {
       })
     },
     fetchList() {
+      if (this.$route.params.words) {
+        this.innerPage.article.title = this.$route.params.words
+      } else {
+        this.innerPage.article.title = "";
+      }
+      if (this.$route.params.cate) {
+        this.innerPage.article.categoryId = this.$route.params.cate
+      } else {
+        this.innerPage.article.categoryId = null
+      }
+      this.innerPage.pageNo = 1
       fetchList(this.innerPage).then(res => {
         this.postList = res.data.records || []
         this.currPage = res.data.current
@@ -108,6 +119,16 @@ export default {
       })
     },
     loadMore() {
+      if (this.$route.params.words) {
+        this.innerPage.article.title = this.$route.params.words
+      } else {
+        this.innerPage.article.title = "";
+      }
+      if (this.$route.params.cate) {
+        this.innerPage.article.categoryId = this.$route.params.cate
+      } else {
+        this.innerPage.article.categoryId = null
+      }
       fetchList(this.innerPage).then(res => {
         this.postList = this.postList.concat(res.data.records || [])
         this.currPage = res.data.current
@@ -120,10 +141,19 @@ export default {
       })
     }
   },
-  mounted() {
+  created() {
     this.fetchFocus();
     this.fetchList();
-  }
+  },
+  watch: {
+    $route: function (newVal, oldVal) {
+      console.log("oldVal:" + oldVal.fullPath)
+      console.log("newVal:" + newVal.fullPath)
+      if (oldVal.fullPath !== newVal.fullPath) {
+        this.fetchList();
+      }
+    }
+  },
 }
 </script>
 <style scoped lang="less">

@@ -12,16 +12,21 @@ const routes = [
         meta: { title: '首页'}
     },
     {
-        path: '/category/:cate',
+        path: '/category/:cate/:title',
         name: 'category',
         component: () => import('../views/Home.vue'),
-        meta: { title: '分类', params: 'cate'}
+        meta: { title: '分类', params: ['cate', 'title']}
     },
     {
         path: '/search/:words',
         name: 'search',
         component: () => import('../views/Home.vue'),
         meta: { title: '搜索', params: 'words'}
+    },
+    {
+        path: '/search',
+        name: 'search',
+        component: () => import('../views/Home.vue')
     },
     {
         path: '/about',
