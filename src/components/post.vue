@@ -115,7 +115,7 @@
         }
 
         .p-tag{
-          margin: 16px 0 0 17%;
+          margin: 0 0 0 17%;
           font-size: 15px;
           color: #10de13;
           letter-spacing: 1px;
@@ -126,7 +126,7 @@
             background-color: #edf8f2;
             margin: 10px;
             height: 20px;
-            line-height: 19px;
+            line-height: 35px;
             padding: 7px 6px;
             border-color: #daf1e6;
             border-radius: 5px;

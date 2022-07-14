@@ -310,6 +310,8 @@ export default {
     display: inline-block;
     visibility: visible;
     z-index: 99;
+    overflow-y: auto;
+    max-height: 20em;
   }
 }
 </style>
