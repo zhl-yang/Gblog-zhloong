@@ -2,8 +2,8 @@
   <div id="layout-header" :class="{'fixed':fixed,'hidden':hidden}" @click.stop="mobileShow=false">
     <div class="site-logo">
       <router-link to="/">
-        <img src="@/assets/site-logo.svg" alt="">
-        <p class="site-name">Gblog</p>
+        <img src="@/assets/logo.gif" alt="">
+        <p class="site-name">Home</p>
       </router-link>
     </div>
     <div class="menus-btn" @click.stop="mobileShow=!mobileShow">
@@ -147,13 +147,14 @@ export default {
   img {
     width: 60px;
     height: 60px;
+    margin-top: 1px;
   }
 
   p.site-name {
     font-size: 15px;
     font-weight: bold;
     position: relative;
-    top: -10px;
+    top: 0px;
   }
 }
 
