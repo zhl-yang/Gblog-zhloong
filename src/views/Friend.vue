@@ -57,8 +57,6 @@ export default {
     fetchFriend() {
       fetchFriend().then(res => {
         this.list = res.data || []
-        debugger
-        console.log(this.list)
         console.log(res)
       }).catch(err => {
         console.log(err)
