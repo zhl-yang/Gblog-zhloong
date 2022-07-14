@@ -133,8 +133,12 @@ export default {
       fetchList(this.innerPage).then(res => {
         this.postList = res.data.records || []
         this.currPage = res.data.current
-        this.innerPage.pageNo += 1
-        this.hasNextPage = true
+        if (res.data.pages <= this.innerPage.pageNo) {
+          this.hasNextPage = false
+        } else {
+          this.innerPage.pageNo += 1
+          this.hasNextPage = true
+        }
       }).catch(err => {
         console.log(err)
       })
@@ -153,7 +157,7 @@ export default {
       fetchList(this.innerPage).then(res => {
         this.postList = this.postList.concat(res.data.records || [])
         this.currPage = res.data.current
-        if (res.data.records.length == 0 || res.data.records.length < this.innerPage.pageSize) {
+        if (res.data.pages <= this.innerPage.pageNo) {
           this.hasNextPage = false
         } else {
           this.innerPage.pageNo += 1
