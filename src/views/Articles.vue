@@ -39,10 +39,9 @@
 <!--                    <p>支付宝</p></li>-->
 <!--                </ul>-->
 <!--              </div>-->
-              <!-- 文章标签 -->
-              <div class="post-tags">
+              <div class="post-tags" v-if="tags.length">
                 <i class="iconfont iconcategory"></i>
-                <span class="post-tags-split" v-for="t in tags">{{ t.tagName }} </span>
+                <router-link v-for="item in tags" :key="item.tagName" :to="`/tags/${item.id}/${item.tagName}`">{{ item.tagName }} </router-link>
               </div>
             </footer>
           </section-title>
@@ -305,9 +304,21 @@ article.hentry {
     }
 
     .post-tags {
-      margin: 7px 0 0 20px;
-      float: left;
-      text-transform: uppercase;
+      font-size: 15px;
+      color: #10de13;
+      letter-spacing: 1px;
+      font-weight: 800;
+      border: 4px;
+
+      a{
+        background-color: #edf8f2;
+        margin: 10px;
+        height: 20px;
+        line-height: 19px;
+        padding: 7px 6px;
+        border-color: #daf1e6;
+        border-radius: 5px;
+      }
 
       a:hover {
         color: #ff6d6d;

@@ -7,7 +7,7 @@
                 </router-link>
             </div>
             <h1 class="entry-title">
-                <router-link :to="`/article/${post.id}`"><span v-if="post.isTop" style="color:#ff6d6d;font-weight:600">[置顶] </span>{{post.title}}</router-link>
+                <router-link :to="`/article/${post.id}`" :title="post.title"><span v-if="post.isTop" style="color:#ff6d6d;font-weight:600">[置顶] </span>{{post.title}}</router-link>
             </h1>
             <div class="p-time">
                 <i class="iconfont iconmeditor-time"></i> {{post.pubTime}}<i v-if="post.isHot" class="iconfont iconfire" style="margin-left: 5px;color: #ff6d6d;"></i>
@@ -85,7 +85,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            width: 70%;
+            width: 60%;
             color: #737373;
 
             & a:hover {
@@ -115,7 +115,7 @@
         }
 
         .p-tag{
-          margin: 0 0 0 17%;
+          margin: 16px 0 0 17%;
           font-size: 15px;
           color: #10de13;
           letter-spacing: 1px;
@@ -123,8 +123,17 @@
           border: 4px;
 
           a{
-            background-color: #f8f8f8;
+            background-color: #edf8f2;
             margin: 10px;
+            height: 20px;
+            line-height: 19px;
+            padding: 7px 6px;
+            border-color: #daf1e6;
+            border-radius: 5px;
+          }
+
+          a:hover {
+            color: #ff6d6d;
           }
 
         }
