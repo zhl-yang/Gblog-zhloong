@@ -147,14 +147,14 @@ export default {
   img {
     width: 60px;
     height: 60px;
-    margin-top: 1px;
+    margin-top: 5px;
   }
 
   p.site-name {
     font-size: 15px;
     font-weight: bold;
     position: relative;
-    top: 0px;
+    top: -2px;
   }
 }
 
