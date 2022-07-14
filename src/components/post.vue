@@ -126,7 +126,7 @@
             background-color: #edf8f2;
             margin: 10px;
             height: 20px;
-            line-height: 35px;
+            line-height: 40px;
             padding: 7px 6px;
             border-color: #daf1e6;
             border-radius: 5px;
