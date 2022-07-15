@@ -17,7 +17,7 @@
               <div id="crumbs">最后更新时间：{{ article.createTime }}</div>
             </div>
           </header>
-          <img  class="entry-banner" :src="article.banner"/>
+          <img class="entry-banner" :src="article.banner"/>
           <!-- 正文输出 -->
           <div class="entry-content" v-highlight>
             <div v-html="article.contentHtml"></div>
@@ -31,18 +31,20 @@
                 <i class="iconfont iconeyes"></i>
                 <span class="count">{{ article.viewNum }}</span>
               </div>
-<!--              <div class="donate" @click="showDonate=!showDonate">-->
-<!--                <span>赏</span>-->
-<!--                <ul class="donate_inner" :class="{'show':showDonate}">-->
-<!--                  <li class="wedonate"><img src="http://cdn.fengziy.cn/gblog/wexin_pay.png">-->
-<!--                    <p>微信</p></li>-->
-<!--                  <li class="alidonate"><img src="http://cdn.fengziy.cn/gblog/ali_pay.jpg">-->
-<!--                    <p>支付宝</p></li>-->
-<!--                </ul>-->
-<!--              </div>-->
+              <!--              <div class="donate" @click="showDonate=!showDonate">-->
+              <!--                <span>赏</span>-->
+              <!--                <ul class="donate_inner" :class="{'show':showDonate}">-->
+              <!--                  <li class="wedonate"><img src="http://cdn.fengziy.cn/gblog/wexin_pay.png">-->
+              <!--                    <p>微信</p></li>-->
+              <!--                  <li class="alidonate"><img src="http://cdn.fengziy.cn/gblog/ali_pay.jpg">-->
+              <!--                    <p>支付宝</p></li>-->
+              <!--                </ul>-->
+              <!--              </div>-->
               <div class="post-tags" v-if="tags.length">
                 <i class="iconfont iconcategory"></i>
-                <router-link v-for="item in tags" :key="item.tagName" :to="`/tags/${item.id}/${item.tagName}`">{{ item.tagName }} </router-link>
+                <router-link v-for="item in tags" :key="item.tagName" :to="`/tags/${item.id}/${item.tagName}`">
+                  {{ item.tagName }}
+                </router-link>
               </div>
             </footer>
           </section-title>
@@ -103,7 +105,7 @@ export default {
     menuTree
   },
   computed: {
-    getLocationHref(){
+    getLocationHref() {
       let href = window.location.href
       return href;
     }
@@ -173,12 +175,16 @@ export default {
 }
 
 article.hentry {
+  word-break: break-all;
+  word-wrap: break-word;
+
   .entry-header {
     .entry-title {
       font-size: 23px;
       font-weight: 600;
       color: #737373;
       margin: 0.67em 0;
+
 
       &:before {
         content: "#";
@@ -204,13 +210,13 @@ article.hentry {
     }
   }
 
-  .entry-banner{
+  .entry-banner {
     margin: 0 auto;
     width: 100%;
   }
+
   .entry-content {
-    word-break: break-all;
-    word-wrap: break-word;
+
   }
 
   footer.post-footer {
@@ -317,7 +323,7 @@ article.hentry {
       font-weight: 800;
       border: 4px;
 
-      a{
+      a {
         background-color: #edf8f2;
         margin: 10px;
         height: 20px;
@@ -356,8 +362,6 @@ article.hentry {
       margin: 10px 0;
       overflow: hidden;
       text-overflow: ellipsis;
-      word-break: break-all;
-      word-wrap: break-word;
     }
 
     a {
