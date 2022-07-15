@@ -9,7 +9,7 @@ const routes = [
         path: '/',
         name: 'home',
         component: () => import('../views/Home.vue'),
-        meta: { title: '春风而至'}
+        meta: { title: '首页'}
     },
     {
         path: '/category/:cate/:title',
@@ -60,7 +60,7 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
-    let title = '春风而至'
+    let title = '松花烧饼'
     if (to.meta.params){
         title = `${to.meta.title}:${to.params[to.meta.params] || ''} - ${title}`
     }else {

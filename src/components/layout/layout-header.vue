@@ -3,7 +3,7 @@
     <div class="site-logo">
       <router-link to="/">
         <img src="@/assets/logo.gif" alt="">
-        <p class="site-name">Home</p>
+        <p class="site-name">松花烧饼</p>
       </router-link>
     </div>
     <div class="menus-btn" @click.stop="mobileShow=!mobileShow">
