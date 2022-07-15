@@ -25,4 +25,10 @@
   bottom: 240px;
 }
 
+/******/
+@media (max-width: 800px) {
+  .music163 .live2dHtml{
+    display: none;
+  }
+}
 </style>
