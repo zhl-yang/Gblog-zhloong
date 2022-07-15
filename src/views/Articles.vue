@@ -206,9 +206,11 @@ article.hentry {
 
   .entry-banner{
     margin: 0 auto;
-    max-width: 800px;
+    width: 100%;
   }
   .entry-content {
+    word-break: break-all;
+    word-wrap: break-word;
   }
 
   footer.post-footer {
@@ -354,19 +356,14 @@ article.hentry {
       margin: 10px 0;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      word-break: break-all;
+      word-wrap: break-word;
     }
 
     a {
       color: #A0DAD0;
       padding: 0 5px;
     }
-  }
-}
-
-@media (max-width: 1490px) {
-  #article-menus {
-    display: none;
   }
 }
 
