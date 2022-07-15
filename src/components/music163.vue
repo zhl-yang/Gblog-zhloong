@@ -27,7 +27,10 @@
 
 /******/
 @media (max-width: 800px) {
-  .music163 .live2dHtml{
+  .music163{
+    display: none;
+  }
+  .live2dHtml{
     display: none;
   }
 }
