@@ -75,7 +75,14 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
     // 最多延迟 关闭 loading
     setTimeout(() => {
+        // chrome
+        document.body.scrollTop = 0
+        // firefox
+        document.documentElement.scrollTop = 0
+        // safari
+        window.pageYOffset = 0
         store.dispatch('setLoading', false);
-    }, 1500)
+    }, 500)
+
 })
 export default router
