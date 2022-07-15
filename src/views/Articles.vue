@@ -17,6 +17,7 @@
               <div id="crumbs">最后更新时间：{{ article.createTime }}</div>
             </div>
           </header>
+          <img  class="entry-banner" :src="article.banner"/>
           <!-- 正文输出 -->
           <div class="entry-content" v-highlight>
             <div v-html="article.contentHtml"></div>
@@ -203,6 +204,11 @@ article.hentry {
     }
   }
 
+  .entry-banner{
+    margin: 0 auto;
+    padding: 0 10px;
+    max-width: 800px;
+  }
   .entry-content {
   }
 
