@@ -8,13 +8,13 @@
                 <div style="font-size:17px;font-weight: bold;">资源</div>
                 <div><a target="_blank" class="out-link" href="https://segmentfault.com/weekly?utm_source=sf-footer">每周精选</a></div>
                 <div><a target="_blank" class="out-link" href="https://www.jmjc.tech/">简明教程</a></div>
+                <div><a target="_blank" class="out-link" href="https://gitee.com/fengziy/Gblog">网站源码</a></div>
             </div>
             <div class="footer-item">
-                <div>本站已苟活 {{runTimeInterval}}</div>
-                <div><a target="_blank" class="out-link" href="https://admin.zhloong.xyz/">☞后台管理</a></div>
+                <div><a target="_blank" class="out-link" href="https://admin.zhloong.xyz/#/login">☞</a> 本站已苟活 {{runTimeInterval}}</div>
             </div>
         </div>
-        <div class="copyright">Copyright © 2022 by <a target="_blank" class="out-link" href="https://www.fengziy.cn">zhloong.xyz</a> . All rights reserved. | <a target="_blank" class="out-link" href="http://www.beian.miit.gov.cn">陕ICP备18020752</a></div>
+        <div class="copyright">Copyright © 2022 by <a target="_blank" class="out-link" href="https://www.fengziy.cn">zhloong.xyz</a> . All rights reserved. | <a target="_blank" class="out-link" href="//beian.miit.gov.cn/">陕ICP备18020752</a></div>
     </div>
 </template>
 
