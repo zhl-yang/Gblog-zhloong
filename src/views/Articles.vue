@@ -206,7 +206,6 @@ article.hentry {
 
   .entry-banner{
     margin: 0 auto;
-    padding: 0 10px;
     max-width: 800px;
   }
   .entry-content {
