@@ -213,6 +213,10 @@ export default {
     -o-transition: .6s all ease;
     -ms-transition: .6s all ease;
 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     &:before, &:after {
       content: '';
       position: absolute;
