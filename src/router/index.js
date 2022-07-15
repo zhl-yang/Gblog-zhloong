@@ -82,7 +82,7 @@ router.afterEach((to, from) => {
         // safari
         window.pageYOffset = 0
         store.dispatch('setLoading', false);
-    }, 500)
+    }, 1200)
 
 })
 export default router
