@@ -9,7 +9,7 @@ const routes = [
         path: '/',
         name: 'home',
         component: () => import('../views/Home.vue'),
-        meta: { title: '首页'}
+        meta: { title: '春风而至'}
     },
     {
         path: '/category/:cate/:title',
