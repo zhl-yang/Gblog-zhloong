@@ -18,7 +18,6 @@
   z-index: 2;
 }
 .live2dHtml{
-  width: 100%;
   height: 500px;
   position: fixed;
   z-index: 3;
