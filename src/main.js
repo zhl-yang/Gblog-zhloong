@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import './assets/css/style.less'
 import './assets/font/iconfont.css'
-require('./Mock')
+// require('./Mock')
 import {parseTime} from './utils'
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css'	//样式
