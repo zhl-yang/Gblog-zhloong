@@ -5,6 +5,7 @@
     <layout-body></layout-body>
     <layout-footer></layout-footer>
     <Music></Music>
+    <Live2d></Live2d>
   </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ import layoutBody from '@/components/layout/layout-body'
 import layoutFooter from '@/components/layout/layout-footer'
 import Loading from '@/components/loading'
 import Music from '@/components/music163'
+import Live2d from '@/components/live2d'
 
 export default {
   name: "app",
@@ -21,7 +23,8 @@ export default {
     layoutBody,
     layoutFooter,
     Loading,
-    Music
+    Music,
+    Live2d
   }
 }
 </script>
