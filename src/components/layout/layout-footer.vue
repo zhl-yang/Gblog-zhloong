@@ -10,7 +10,7 @@
         <div><a target="_blank" class="out-link" href="https://segmentfault.com/weekly?utm_source=sf-footer">每周精选</a>
         </div>
         <div><a target="_blank" class="out-link" href="https://www.jmjc.tech/">简明教程</a></div>
-        <div><a target="_blank" class="out-link" href="https://gitee.com/fengziy/Gblog">网站源码</a></div>
+        <div><a target="_blank" class="out-link" href="https://gitee.com/zhloong/Gblog-zhloong">网站源码</a></div>
       </div>
       <div class="footer-item">
         <div>本站已苟活 {{ runTimeInterval }}</div>

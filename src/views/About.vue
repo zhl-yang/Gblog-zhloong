@@ -5,7 +5,7 @@
                 <div class="about-site about-info">
                     <section-title><span>❤</span>关于博客</section-title>
                     <div class="info-card">
-                        <p>网站源码来自 <a target="_blank" href="https://gitee.com/fengziy/Gblog" style="color: #ff6d6d;">Gblog</a></p>
+                        <p>网站源码： <a target="_blank" href="https://gitee.com/zhloong/Gblog-zhloong" style="color: #ff6d6d;">Gblog-zhloong</a></p>
                     </div>
                 </div>
                 <div class="about-me about-info">
