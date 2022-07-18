@@ -14,6 +14,7 @@
       </div>
       <div class="footer-item">
         <div>本站已苟活 {{ runTimeInterval }}</div>
+        <div>总访问量(UV)：{{uv}}</div>
         <div><a target="_blank" class="out-link" href="https://admin.zhloong.xyz">☞zhloong.xyz</a></div>
       </div>
     </div>
@@ -29,7 +30,8 @@ export default {
   name: "layout-footer",
   data() {
     return {
-      socials: []
+      socials: [],
+      uv: 0
     }
   },
   components: {
@@ -38,7 +40,7 @@ export default {
   computed: {
     runTimeInterval() {
       return this.$store.state.runTimeInterval;
-    }
+    },
   },
   methods: {
     getSocial() {
@@ -46,9 +48,15 @@ export default {
         this.socials = data
       })
     },
+    getUv() {
+      this.$store.dispatch('getSiteInfo').then(data =>{
+        this.uv = data.uv
+      })
+    }
   },
   created() {
     this.getSocial();
+    this.getUv();
     this.$store.dispatch('initComputeTime');
   }
 }
