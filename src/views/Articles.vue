@@ -1,12 +1,12 @@
 <template>
   <div class="articles">
     <banner></banner>
-    <div id="top-select" class="site-content animate">
+    <div class="site-content animate">
       <!-- 文章目录 -->
       <div id="article-menus">
         <menu-tree :menus="menus" child-label="child"></menu-tree>
       </div>
-      <main class="site-main">
+      <main id="top-select" class="site-main">
         <article class="hentry">
           <!-- 文章头部 -->
           <header class="entry-header">
@@ -164,7 +164,7 @@ export default {
   position: relative;
 
   .site-main {
-    padding: 80px 0 0 0;
+    padding: 20px 0 0 0;
   }
 }
 
