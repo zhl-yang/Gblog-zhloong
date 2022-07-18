@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <banner isHome="true"></banner>
-    <div class="site-content animate">
+    <div id="top-select" class="site-content animate">
       <!--通知栏-->
       <div class="notify">
         <div class="search-result" v-if="hideSlogan">
@@ -164,16 +164,24 @@ export default {
           this.hasNextPage = true
         }
       })
+    },
+    goTop(){
+      setTimeout(() => {
+        let toDocument = document.querySelector('#top-select')
+        toDocument.scrollIntoView({ behavior:'smooth' })
+      }, 1500)
     }
   },
   created() {
     this.fetchFocus();
     this.fetchList();
+    this.goTop();
   },
   watch: {
     $route: function (newVal, oldVal) {
       if (oldVal.fullPath !== newVal.fullPath) {
         this.fetchList();
+        this.goTop();
       }
     }
   },

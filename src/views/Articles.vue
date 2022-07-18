@@ -6,7 +6,7 @@
       <div id="article-menus">
         <menu-tree :menus="menus" child-label="child"></menu-tree>
       </div>
-      <main class="site-main">
+      <main class="site-main" id="top-select">
         <article class="hentry">
           <!-- 文章头部 -->
           <header class="entry-header">
@@ -143,15 +143,20 @@ export default {
             }
           })
     },
+    goTop(){
+      setTimeout(() => {
+        let toDocument = document.querySelector('#top-select')
+        toDocument.scrollIntoView({ behavior:'smooth' })
+      }, 1500)
+    }
+
   },
   mounted() {
     let params = this.$route.params
     this.getArticle(params.id)
     this.getComment(params.id)
+    this.goTop()
   },
-  created() {
-
-  }
 }
 </script>
 <style scoped lang="less">
@@ -172,6 +177,7 @@ export default {
   width: 300px;
   transform: translateX(-120%) translateY(150px);
   font-size: 14px;
+  display: none;
 }
 
 article.hentry {
