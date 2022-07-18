@@ -166,6 +166,9 @@ export default {
       })
     },
     goTop(){
+      if(!this.hideSlogan){
+        return
+      }
       setTimeout(() => {
         let toDocument = document.querySelector('#top-select')
         toDocument.scrollIntoView({ behavior:'smooth' })
