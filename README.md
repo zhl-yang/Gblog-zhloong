@@ -17,9 +17,6 @@
   <a href="https://github.com/zhl-yang/Gblog-zhloong/blob/master/license">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license"/>
   </a>
-  <a href="https://github.com/zhl-yang/Gblog-zhloong/releases">
-      <img src="https://img.shields.io/github/release/zhl-yang/Gblog-zhloong.svg" alt="GitHub release">
-  </a>
 </p>
 
 仓库：[码云](https://gitee.com/zhloong/Gblog-zhloong) | [github](https://github.com/zhl-yang/Gblog-zhloong)  
