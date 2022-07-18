@@ -1,12 +1,12 @@
 <template>
   <div class="articles">
     <banner></banner>
-    <div class="site-content animate">
+    <div id="top-select" class="site-content animate">
       <!-- 文章目录 -->
       <div id="article-menus">
         <menu-tree :menus="menus" child-label="child"></menu-tree>
       </div>
-      <main class="site-main" id="top-select">
+      <main class="site-main">
         <article class="hentry">
           <!-- 文章头部 -->
           <header class="entry-header">
