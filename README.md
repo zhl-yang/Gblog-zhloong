@@ -19,7 +19,10 @@
   </a>
 </p>
 
-仓库：[码云](https://gitee.com/zhloong/Gblog-zhloong) | [github](https://github.com/zhl-yang/Gblog-zhloong)  
+### 仓库：
+> 前端仓库：[码云](https://gitee.com/zhloong/Gblog-zhloong) | [github](https://github.com/zhl-yang/Gblog-zhloong)  
+> 后端仓库：[码云](https://gitee.com/zhloong/gblog-api) | [github](https://github.com/zhl-yang/Gblog-Api)
+
 [博客展示地址](https://blog.zhloong.xyz)
 ### 介绍
 >
@@ -31,8 +34,8 @@
 - [x] 文章列表、详情页展示文章标签
 - [x] 文章按标签筛选
 - [x] 文章按分类筛选
-- [x] 后台APi实现
-- [x] 后台管理界面（待开源）
+- [x] 后台APi实现（见 [Gblog-Api](https://gitee.com/zhloong/gblog-api) ）
+- [x] 后台管理界面
 - [x] 新增樱花特效
 - [x] 新增看板娘插件
 - [x] 新增详情页锚点跳转
