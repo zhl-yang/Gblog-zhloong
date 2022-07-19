@@ -4,7 +4,7 @@
     <layout-header></layout-header>
     <layout-body></layout-body>
     <layout-footer></layout-footer>
-<!--    <Music></Music>-->
+    <Music></Music>
   </div>
 </template>
 <script>
@@ -12,7 +12,7 @@ import layoutHeader from '@/components/layout/layout-header'
 import layoutBody from '@/components/layout/layout-body'
 import layoutFooter from '@/components/layout/layout-footer'
 import Loading from '@/components/loading'
-// import Music from '@/components/music163'
+import Music from '@/components/music163'
 
 export default {
   name: "app",
@@ -21,7 +21,7 @@ export default {
     layoutBody,
     layoutFooter,
     Loading,
-    // Music
+    Music
   }
 }
 </script>
